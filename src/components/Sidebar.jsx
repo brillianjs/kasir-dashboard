@@ -21,6 +21,7 @@ import {
   FiBell,
 } from "react-icons/fi";
 import { useLocation, Link } from "react-router-dom";
+import Logo from "../assets/logo.png";
 
 const Sidebar = ({ isExpandedSidebar }) => {
   const { pathname } = useLocation();
@@ -59,13 +60,24 @@ const Sidebar = ({ isExpandedSidebar }) => {
     >
       <Flex direction="column" align="center" justify="space-between" h="100%">
         <VStack spacing={6} mt={8}>
-          <IconButton
+          {/* <IconButton
             aria-label="Menu"
             icon={<Icon as={FiMenu} />}
             variant="ghost"
             size="lg"
             onClick={handleToggleSidebar}
-          />
+          /> */}
+          <div
+            onClick={handleToggleSidebar}
+            className="cursor-pointer flex flex-row gap-4 justify-start items-center  w-full px-3"
+          >
+            <img className="rounded-full w-10" src={Logo} />
+            {isExpanded && (
+              <h1 className="text-2xl font-bold text-white">
+                Kasir<span className="text-teal-700">Jo</span>
+              </h1>
+            )}
+          </div>
           {!isExpanded &&
             pages.map((page) => (
               <Link
